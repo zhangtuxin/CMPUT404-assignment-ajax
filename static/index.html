@@ -259,7 +259,7 @@ mouse.mousedowners.push(function(x,y,clicked,e) {
 });
 
 mouse.mouseuppers.push(function(x,y,clicked,e) {
-    addEntityWithoutName({'x':x,'y':y,'colour':'pink'});
+    addEntityWithoutName({'x':x,'y':y,'colour':'red'});
 });
 
 mouse.mousedraggers.push(function(x,y,clicked,e) {
@@ -286,7 +286,7 @@ function getXMLHTTPRequest(url, callback) { //This code was taken directly from 
 function update() {
     //XXX: TODO Get the world from the webservice using a XMLHTTPRequest
     getXMLHTTPRequest('/world');
-    //drawNextFrame();
+    drawNextFrame();
     drawFrame();
 }
 

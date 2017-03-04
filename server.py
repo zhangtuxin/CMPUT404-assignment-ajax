@@ -22,7 +22,7 @@
 
 
 import flask
-from flask import Flask, request,redirect,jsonify
+from flask import Flask, request,redirect,jsonify,Response
 import json
 app = Flask(__name__)
 app.debug = True
@@ -85,7 +85,7 @@ def update(entity):
         for key, value in obj.iteritems():
             myWorld.update(entity, key, value)
     elif request.method == "PUT":
-        myWorld.set(obj)
+        myWorld.set(entity,obj)
         
 
     return jsonify(myWorld.get(entity))
