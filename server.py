@@ -22,7 +22,7 @@
 
 
 import flask
-from flask import Flask, request,redirect,jsonify,Response
+from flask import Flask, request,redirect,Response
 import json
 app = Flask(__name__)
 app.debug = True
@@ -98,12 +98,12 @@ def world():
         obj = flask_post_json()
         for key in obj:
             myWorld.set(key, obj[key])
-    return jsonify(myWorld.world())
+    return Response(json.dumps(myWorld.world()), status=200, mimetype="application/json")
 
 @app.route("/entity/<entity>")    
 def get_entity(entity):
     '''This is the GET version of the entity interface, return a representation of the entity'''
-    return jsonify(myWorld.get(entity))
+    return Response(json.dumps(myWorld.get(entity)), status=200, mimetype="application/json")
     
 
 @app.route("/clear", methods=['POST','GET'])
@@ -111,7 +111,7 @@ def clear():
     '''Clear the world out!'''
     myWorld.clear()
 
-    return jsonify(myWorld.world())
+    return Response(json.dumps(myWorld.world()), status=200, mimetype="application/json")
 
 if __name__ == "__main__":
     app.run()

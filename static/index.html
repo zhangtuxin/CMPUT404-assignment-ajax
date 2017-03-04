@@ -70,11 +70,12 @@ function drawCircle(context,entity) {
         var y = entity["y"];
         //moveTo(x,y);
         //var t = 2*Math.PI
-        //var x1 = 16*Math.sin(t)**3;
-        //var y1 = 13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*2*t);
+        //var x1 = 16*Math.sin(3.14)*3;
+        //var y1 = 13*Math.cos(3.14)-5*Math.cos(2*3.14)-2*Math.cos(3*3.14)-Math.cos(4*2*3.14);
         fillStyle = entity["colour"];
         strokeStyle = fillStyle;
-        arc(x, y, (entity["radius"])?entity["radius"]:50, 0, 2.0 * Math.PI, false);  
+        arc(x, y, (entity["radius"])?entity["radius"]:20, 0, 2.0 * Math.PI, false); 
+        //arc(x, y, (entity["radius"])?entity["radius"]:20, x1, x2, false);  
         stroke();                                
     }
 }
