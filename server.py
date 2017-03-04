@@ -87,8 +87,7 @@ def update(entity):
     elif request.method == "PUT":
         myWorld.set(entity,obj)
         
-
-    return jsonify(myWorld.get(entity))
+    return Response(json.dumps(myWorld.get(entity)), status=200, mimetype="application/json")
 
 @app.route("/world", methods=['POST','GET'])    
 def world():
