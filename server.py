@@ -80,12 +80,12 @@ def hello():
 @app.route("/entity/<entity>", methods=['POST','PUT'])
 def update(entity):
     '''update the entities via this interface'''
-    obj = flask_post_json()
+    ajax_object = flask_post_json()
     if request.method == "POST":
-        for key, value in obj.iteritems():
+        for key, value in ajax_object.iteritems():
             myWorld.update(entity, key, value)
     elif request.method == "PUT":
-        myWorld.set(entity,obj)
+        myWorld.set(entity,ajax_object)
         
     return Response(json.dumps(myWorld.get(entity)), status=200, mimetype="application/json")
 
@@ -95,9 +95,9 @@ def world():
     if request.method == "GET":
         return Response(json.dumps(myWorld.world()), status=200, mimetype="application/json")
     elif request.method == "POST":
-        obj = flask_post_json()
-        for key in obj:
-            myWorld.set(key, obj[key])
+        ajax_object = flask_post_json()
+        for key in ajax_object:
+            myWorld.set(key, ajax_object[key])
     return Response(json.dumps(myWorld.world()), status=200, mimetype="application/json")
 
 @app.route("/entity/<entity>")    
